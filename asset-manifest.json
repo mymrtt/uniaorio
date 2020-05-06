@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4ec3fc9b.chunk.css",
+    "main.js": "/static/js/main.ec84de75.chunk.js",
+    "main.js.map": "/static/js/main.ec84de75.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2f33c4f9.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2f33c4f9.js.map",
+    "static/js/2.961753e3.chunk.js": "/static/js/2.961753e3.chunk.js",
+    "static/js/2.961753e3.chunk.js.map": "/static/js/2.961753e3.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2db3f3d4f61952db846b99cd6f8d8111.js": "/precache-manifest.2db3f3d4f61952db846b99cd6f8d8111.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.4ec3fc9b.chunk.css.map": "/static/css/main.4ec3fc9b.chunk.css.map",
+    "static/js/2.961753e3.chunk.js.LICENSE.txt": "/static/js/2.961753e3.chunk.js.LICENSE.txt",
+    "static/media/check.svg": "/static/media/check.32d24ad4.svg",
+    "static/media/densDiagonal.svg": "/static/media/densDiagonal.22c16143.svg",
+    "static/media/densHorizontal.svg": "/static/media/densHorizontal.23396a5d.svg",
+    "static/media/densVertical.svg": "/static/media/densVertical.1cac0dbe.svg",
+    "static/media/dropUp.svg": "/static/media/dropUp.a971af96.svg",
+    "static/media/dropdownBlack.svg": "/static/media/dropdownBlack.4603df69.svg",
+    "static/media/dropdownWhite.svg": "/static/media/dropdownWhite.1f90e964.svg",
+    "static/media/loading.svg": "/static/media/loading.00169747.svg",
+    "static/media/logo.png": "/static/media/logo.3f9b1271.png",
+    "static/media/index.css": "/static/media/mask.96058ee8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f33c4f9.js",
+    "static/js/2.961753e3.chunk.js",
+    "static/css/main.4ec3fc9b.chunk.css",
+    "static/js/main.ec84de75.chunk.js"
+  ]
+}
