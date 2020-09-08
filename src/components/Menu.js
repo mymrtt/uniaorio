@@ -5,30 +5,19 @@ import { NavLink } from 'react-router-dom';
 // Images
 import Check from '../assets/check.svg';
 import Logo from '../assets/logo.png';
-import Dropdown from '../assets/dropdownWhite.svg';
-import DropdownUp from '../assets/dropUp.svg';
 import densHorizontal from '../assets/densHorizontal.svg';
 import densVertical from '../assets/densVertical.svg';
 import densDiagonal from '../assets/densDiagonal.svg'
 
+import filterIcon3 from '../assets/filter-icon-3.svg';
+import filterIcon4 from '../assets/filter-icon-4.svg';
+import filterIcon6 from '../assets/filter-icon-6.svg';
+import filterSelectedIcon3 from '../assets/filter-selected-icon-3.svg';
+import filterSelectedIcon4 from '../assets/filter-selected-icon-4.svg';
+import filterSelectedIcon6 from '../assets/filter-selected-icon-6.svg';
+
 class Menu extends Component {
   state = {
-    buttonList: [
-      {
-        label: "Mapeamento",
-        route: "/"
-      },
-      {
-        label: "Estatísticas por Bairro",
-        route: "/statistics"
-      },      
-    ],
-    mappingList: [
-      "Sócio-Econômico",
-      "Densidade Demográfica",
-      "Demandas e Entregas",
-      "ONG's Parceiras"
-    ],
     averageIncome: [
       {
         text: 'Até R$1.254,00',
@@ -89,7 +78,32 @@ class Menu extends Component {
         text: '10 cestas demandadas',
       },
     ],
-    isMapping: false,
+    menuItems: [
+      {
+        image: filterIcon3,
+        selectedImage: filterSelectedIcon3,
+        title: 'Solidariedade',
+        color: '#F0184F',
+        text: 'solid',
+        layerName: 'Solidariedade'
+      },
+      {
+        image: filterIcon4,
+        selectedImage: filterSelectedIcon4,
+        title: 'Covid-19',
+        color: '#0ACF59',
+        text: 'covid',
+        layerName: 'Covid'
+      },
+      // {
+      //   image: filterIcon6,
+      //   selectedImage: filterSelectedIcon6,
+      //   title: 'Transparência',
+      //   color: '#FA9900',
+      //   text: 'painel',
+      // }
+    ],
+    // isMapping: false,
     isSelectedButton: '',
     isSelectedCheck: ['Sócio-Econômico', 'Densidade Demográfica'],
     isSelected: '',
@@ -97,13 +111,6 @@ class Menu extends Component {
     DemographicDensity: false,
     isDemandsandDeliveries: false,
   };
-
-  handleIsMappingOpen = (item) => {
-    this.setState({ 
-      isSelectedButton: item,
-      isMapping: !this.state.isMapping,
-    });
-  }
 
   handleSelected = (label) => {    
     this.setState({ isSelectedButton: label });
@@ -179,66 +186,53 @@ class Menu extends Component {
       case 'Demandas e Entregas':
         return this.renderDemandsandDeliveries();
       case "ONG's Parceiras":
-      return console.log('ongs');
       default:
         return null;
     }
   }
 
-  renderMapping = () => (
-    <div className="container_mapping">
-      {this.state.mappingList.map((item) => (
-        <>
-          <div key={item} className="container_mapping-item">
-            <div
-              className="mapping_item-checkbox"
-              onClick={() => this.handleMappingCheck(item)}
-            >
-              {this.renderCheckIcon(item)}
-            </div>
-            <p className="mapping_item-text">{item}</p>
-          </div>
-          {this.renderDataItem(item)}
-        </>
-      ))}
-    </div>
-  )
-  
-  
-  render() {
+  renderMenuItem = () => {
+    const { menuItems } = this.state;
+    return menuItems.map(item => {
+      const currentItem = this.props.selectedMenuItem.title === item.title;
+      const setColor = currentItem ? item.color : '#595959';
+      const setFont = currentItem ? '600' : '200';
+      const setBackground = currentItem ? item.color : '#fff';
+      const setOpacity = this.props.selectedMenuItem ? 1 :  0.5;
 
+      return (
+        <li
+          key={item.title}
+          onClick={() => this.props.selectedMenuItem && this.props.selectMenuItem(item)}
+          style={{ 'color': `${setColor}`, 'fontWeight': `${setFont}`, opacity: `${setOpacity}`}}>
+          <img src={currentItem ? item.selectedImage : item.image} alt='Icone'/>
+          <p>{item.title}</p>
+          <span className='line' style={{ 'background': `${setBackground}`, 'transition': 'all .25s ease-in-out' }}></span>
+        </li>
+      )}
+    );
+  }
+  render() {
     return (
-      <aside className="container_menu" style={this.props.styles}>
-        <figure className="container_menu-logo">
-          <img src={Logo} alt="logo" className="menu_logo" />
-        </figure>
-        <div className="container_menu-wrapper">
-          {this.state.buttonList.map(({label, route}) => (
-            <>
-              <NavLink
-                key={label}
-                className="container_menu-button"
-                exact to={route}
-                activeClassName="menu_button-active"
-                style={{ 
-                  backgroundColor: this.state.isSelectedButton === label && '#CC2E00',
-                  justifyContent: label === 'Mapeamento' && 'space-between'
-                }}
-                onClick={label === 'Mapeamento'
-                  ? () => this.handleIsMappingOpen(label)
-                  : () => this.handleSelected(label)
-                }
-              >
-                {label}
-                {label === 'Mapeamento' && this.state.isMapping === false ? (
-                  <img src={Dropdown} alt="dropdown" className="menu_drop" />
-                ) : (label === 'Mapeamento' && <img src={DropdownUp} alt="dropUp" className="menu_drop" />)}
-              </NavLink>
-              {label === "Mapeamento" ? this.state.isMapping && this.renderMapping() : null}
-            </>
-          ))}
+      <nav className="menu">
+        <div className="menu-container">
+          <div className="menu-logo">
+            <NavLink to={'/uniaorio'}>
+              <img src={Logo} alt="logo"/>
+            </NavLink>
+            <div>
+              <p>Última atualização</p>
+              <p className="text-red">18:39 - 28.05.20</p>
+            </div>
+          </div>
+          <ul className="menu-filters">
+            {this.renderMenuItem()}
+          </ul>
+          <a href={'https://www.riocontracorona.org/'} target="_blank" rel="noopener noreferrer" className='donation-button'>
+            Faça uma doação
+          </a>
         </div>
-    </aside>
+      </nav>
     );
   }
 }
