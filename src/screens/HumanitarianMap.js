@@ -4,11 +4,15 @@ import mapboxgl from 'mapbox-gl';
 
 // Components
 import Subtitle from '../components/ModalSubtitle';
+
+// Images
 import filterIcon3 from '../assets/filter-icon-3.svg';
 import filterSelectedIcon3 from '../assets/filter-selected-icon-3.svg';
 import vnw from '../assets/vnw.svg';
-import { getIndexes } from '../api';
 import Loading from '../assets/loading.svg';
+
+// Services
+import { getIndexes } from '../api';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWdvcmNvdXRvIiwiYSI6ImNrOWZudjNtcTAyd3EzbHI3a2ppbnpnemUifQ.D--CSyWyEk70oULTVok7vg';
 

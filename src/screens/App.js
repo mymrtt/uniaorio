@@ -4,12 +4,13 @@ import React, { Component } from 'react';
 // Components
 import Menu from '../components/Menu';
 import HumanitarianMap from '../screens/HumanitarianMap';
+import Subtitle from '../components/ModalSubtitle';
+
+// Images
 import painel from '../assets/painel.svg';
 import menu from '../assets/menu.png';
 import painel2 from '../assets/painel2.svg';
 
-
-import Subtitle from '../components/ModalSubtitle';
 
 class App extends Component {
   constructor(props) {

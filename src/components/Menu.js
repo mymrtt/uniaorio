@@ -229,7 +229,7 @@ class Menu extends Component {
             {this.renderMenuItem()}
           </ul>
           <a href={'https://www.riocontracorona.org/'} target="_blank" rel="noopener noreferrer" className='donation-button'>
-            Faça uma doação
+            Faça uma Doação
           </a>
         </div>
       </nav>
